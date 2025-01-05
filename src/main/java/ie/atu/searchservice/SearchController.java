@@ -16,4 +16,10 @@ public class SearchController {
     public List<SearchDetails> search(@RequestParam String query) {
         return searchService.performSearch(query);
     }
+
+    @GetMapping("/search/{id}")
+    public SearchDetails getById(@PathVariable Long id) {
+        return searchService.getById(id);
+    }
 }
+
