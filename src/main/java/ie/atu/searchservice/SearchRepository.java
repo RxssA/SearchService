@@ -7,4 +7,7 @@ import java.util.List;
 @Repository
 public interface SearchRepository extends JpaRepository<SearchDetails, Long> {
     List<SearchDetails> findByNameContainingIgnoreCase(String query);
+
+
+    List<SearchDetails> findByDescriptionContainingIgnoreCase(String description);
 }

@@ -1,9 +1,22 @@
 package ie.atu.searchservice;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class SearchDetails {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private String description;
+
+    public SearchDetails() {
+    }
 
     public SearchDetails(Long id, String name, String description) {
         this.id = id;
