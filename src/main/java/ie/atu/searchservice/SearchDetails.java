@@ -1,58 +1,37 @@
 package ie.atu.searchservice;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.List;
-
-@Document(collection = "search_details")
 public class SearchDetails {
+    private Long id;
+    private String name;
+    private String description;
 
-    @Id
-    private String searchId;
-    private String searchCriteria;
-    private String searchValue;
-    private List<String> results;
-    private String timestamp;
-
-
-    public String getSearchId() {
-        return searchId;
+    public SearchDetails(Long id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
     }
 
-    public void setSearchId(String searchId) {
-        this.searchId = searchId;
+    public Long getId() {
+        return id;
     }
 
-    public String getSearchCriteria() {
-        return searchCriteria;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setSearchCriteria(String searchCriteria) {
-        this.searchCriteria = searchCriteria;
+    public String getName() {
+        return name;
     }
 
-    public String getSearchValue() {
-        return searchValue;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setSearchValue(String searchValue) {
-        this.searchValue = searchValue;
+    public String getDescription() {
+        return description;
     }
 
-    public List<String> getResults() {
-        return results;
-    }
-
-    public void setResults(List<String> results) {
-        this.results = results;
-    }
-
-    public String getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
