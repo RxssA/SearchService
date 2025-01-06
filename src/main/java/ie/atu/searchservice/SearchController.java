@@ -1,4 +1,4 @@
-
+// Controller Class
 package ie.atu.searchservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,4 +19,3 @@ public class SearchController {
         return searchService.findAvailableRooms(date);
     }
 }
-
