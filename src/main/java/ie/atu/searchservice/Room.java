@@ -1,3 +1,4 @@
+// Entity Class (Room)
 package ie.atu.searchservice;
 
 import jakarta.persistence.Entity;
@@ -6,24 +7,16 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class SearchDetails {
+public class Room {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-    private String description;
+    private String dateAvailable;
+    private boolean isBooked;
 
-    public SearchDetails() {
-    }
-
-    public SearchDetails(Long id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-    }
-
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -40,11 +33,19 @@ public class SearchDetails {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDateAvailable() {
+        return dateAvailable;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDateAvailable(String dateAvailable) {
+        this.dateAvailable = dateAvailable;
+    }
+
+    public boolean isBooked() {
+        return isBooked;
+    }
+
+    public void setBooked(boolean booked) {
+        isBooked = booked;
     }
 }
