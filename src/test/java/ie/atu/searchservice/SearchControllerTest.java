@@ -27,11 +27,11 @@ class SearchControllerTest {
     @Test
     void testSearchRooms() throws Exception {
         // Mocking service behavior
-        when(searchService.findAvailableRooms("2025-01-06"))
+        when(searchService.findAvailableRooms("2025-01-02"))
                 .thenReturn(Arrays.asList("Room A", "Room B"));
 
         // Verify the mock returns the correct value (debugging)
-        System.out.println("Mocked rooms: " + searchService.findAvailableRooms("2025-01-06"));
+        System.out.println("Mocked rooms: " + searchService.findAvailableRooms("2025-01-02"));
 
         // Testing the endpoint
         mockMvc.perform(get("/search")
