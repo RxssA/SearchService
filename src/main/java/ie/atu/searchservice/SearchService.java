@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 @Service
 public class SearchService {
 
+
     @Autowired
     private SearchRepository searchRepository;
 

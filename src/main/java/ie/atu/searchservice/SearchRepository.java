@@ -8,5 +8,6 @@ import java.util.List;
 @Repository
 public interface SearchRepository extends MongoRepository<Room, String> {
 
+
     List<Room> findByDateAvailableAndIsBooked(String dateAvailable, boolean isBooked);
 }

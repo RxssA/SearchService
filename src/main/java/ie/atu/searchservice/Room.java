@@ -37,6 +37,7 @@ public class Room {
         this.dateAvailable = dateAvailable;
     }
 
+
     public boolean isBooked() {
         return isBooked;
     }
