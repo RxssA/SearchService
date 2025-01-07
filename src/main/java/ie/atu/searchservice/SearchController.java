@@ -1,4 +1,3 @@
-// Controller Class
 package ie.atu.searchservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
