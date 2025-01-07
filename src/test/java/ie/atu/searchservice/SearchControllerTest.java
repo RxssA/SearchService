@@ -1,11 +1,12 @@
 package ie.atu.searchservice;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Arrays;
 
@@ -13,31 +14,31 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
-@WebMvcTest(SearchController.class)
+@ExtendWith(MockitoExtension.class)
 class SearchControllerTest {
 
-    @Autowired
     private MockMvc mockMvc;
 
-    @MockBean
+    @Mock
     private SearchService searchService;
+
+    @InjectMocks
+    private SearchController searchController;
 
     @Test
     void testSearchRooms() throws Exception {
-        // Mocking service behavior
-        when(searchService.findAvailableRooms("2025-01-02"))
-                .thenReturn(Arrays.asList("Room A", "Room B"));
+        // Setting up MockMvc
+        mockMvc = MockMvcBuilders.standaloneSetup(searchController).build();
 
-        // Verify the mock returns the correct value (debugging)
-        System.out.println("Mocked rooms: " + searchService.findAvailableRooms("2025-01-02"));
+        // Mocking service behavior
+        when(searchService.findAvailableRooms("2025-01-06"))
+                .thenReturn(Arrays.asList("Room A", "Room B"));
 
         // Testing the endpoint
         mockMvc.perform(get("/search")
                         .param("date", "2025-01-06")
-                        .accept(MediaType.APPLICATION_JSON))
-                .andDo(print()) // Prints the request and response for debugging
+                        .accept("application/json"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[\"Room A\", \"Room B\"]"));
     }
