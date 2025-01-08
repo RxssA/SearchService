@@ -14,7 +14,7 @@ public class SearchService {
     private SearchRepository searchRepository;
 
     public List<String> findAvailableRooms(String date) {
-        // Query MongoDB for available rooms
+
         return searchRepository.findByDateAvailableAndIsBooked(date, false)
                 .stream()
                 .map(Room::getName)
