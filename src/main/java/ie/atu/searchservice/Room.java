@@ -3,16 +3,15 @@ package ie.atu.searchservice;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "rooms") // Maps to the 'rooms' collection in MongoDB
+@Document(collection = "rooms")
 public class Room {
 
     @Id
-    private String id; // MongoDB uses String IDs by default
+    private String id;
     private String name;
     private String dateAvailable;
     private boolean isBooked;
 
-    // Getters and Setters
     public String getId() {
         return id;
     }
