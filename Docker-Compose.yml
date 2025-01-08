@@ -5,6 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: user-service
+    image: searchservice
     ports:
       - "8083:8083"
     environment:
